@@ -885,32 +885,32 @@
 						<div class="form-wrapper flowers neela-style">
 							<h1 class="section-title">Will you Attend?</h1>
 							
-							<form id="form-rsvp" method="POST" action="https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec">
+							<form id="form-rsvp">
 								
 								<div class="form-floating">
-									<input type="text" name="Name" id="name" placeholder="Your Name*" class="form-control required fromName">
+									<input type="text" name="name" id="name" placeholder="Your Name*" class="form-control required fromName">
 									<label for="name">Your Name*</label>
 								</div>
 								
 								<div class="form-floating">
-									<input type="email" name="E-mail" id="email" placeholder="E-mail*" class="form-control required fromEmail">
+									<input type="email" name="email" id="email" placeholder="E-mail*" class="form-control required fromEmail">
 									<label for="email">E-mail*</label>
 								</div>
 								
 								<div class="form-check-wrapper">
 									<div class="form-check form-check-inline">
-										<input class="form-check-input required" type="radio" name="Attend wedding" id="attend_wedding_yes">
+										<input class="form-check-input required" type="radio" name="attend" id="attend_wedding_yes" value="yes">
 										<label for="attend_wedding_yes">Yes, I will attend.</label>
 									</div>
 									
 									<div class="form-check form-check-inline">
-										<input class="form-check-input required" type="radio" name="Attend wedding" id="attend_wedding_no">
+										<input class="form-check-input required" type="radio" name="attend" id="attend_wedding_no" value="no">
 										<label for="attend_wedding_no">Sorry, I can't come.</label>
 									</div>
 								</div>
 								
 								<div class="form-floating">
-									<select class="form-select" aria-label="Number of guests" name="Number of Guests" id="num_guests">
+									<select class="form-select" aria-label="Number of guests" name="guest" id="num_guests">
 										<option value="0">0</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -957,7 +957,7 @@
 								</fieldset> -->
 								
 								<div class="form-floating">
-									<textarea id="message" name="Message" placeholder="Message" class="form-control" rows="4"></textarea>
+									<textarea id="message" name="message" placeholder="message" class="form-control" rows="4"></textarea>
 									<label for="message">Message</label>
 								</div>
 								
@@ -967,6 +967,7 @@
 									<button type="submit" class="btn btn-primary submit_form">Send</button>
 								</div>
 							</form>
+
 						</div>
 					</div>
 				</div>
@@ -1047,6 +1048,26 @@
 	<!-- Template Scripts -->
 	<script src="js/variables.js"></script>
 	<script src="js/scripts.js"></script>
+
+	<script>
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec'
+		const form = document.forms['form-rsvp']
+	  
+		form.addEventListener('submit', e => {
+		  e.preventDefault()
+		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => {
+				$(".form_status_message").html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + 'Success Send!' + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+
+				document.getElementById("form-rsvp").reset();
+				console.log('Success!', response)
+			})
+			.catch(error =>{
+				$(".form_status_message").html("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + err + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+				console.error('Error!', error.message)
+			} )
+		})
+	  </script>
 
 </body>
 </html>

@@ -940,9 +940,9 @@ var Neela;
 
                 html += "&len=" + len;
 
-                if ($(".g-recaptcha").length) {
-                    html += "&recaptcha=" + grecaptcha.getResponse();
-                }
+                // if ($(".g-recaptcha").length) {
+                //     html += "&recaptcha=" + grecaptcha.getResponse();
+                // }
 
                 showSuccess = function () {
                     $(".form_status_message").html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + $_self.contactFormSuccessMsg + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
