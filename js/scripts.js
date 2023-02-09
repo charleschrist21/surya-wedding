@@ -182,9 +182,21 @@ var Neela;
             var isLoaded = setInterval(function () {
                 if (/loaded|complete/.test(document.readyState)) {
                     clearInterval(isLoaded);
-                    $("#preloader").fadeOut(1000);
+                    $('#openCard').css('display','block')
+                    $('body').click(function(){
+                        $("#preloader").fadeOut(700);
+
+                        const audio = document.querySelector("audio");
+                        audio.volume = 0.2;
+                        audio.play();
+                    })
+                    
                 }
             }, 10);
+        },
+
+        openCard: function(){
+
         },
 
         navigation: function () {

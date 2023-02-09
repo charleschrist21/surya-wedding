@@ -62,6 +62,7 @@
 				<small>&</small><br>
 				Riza
 			</div>
+			<p style="display: none;" id="openCard">Klik Untuk Membuka</p>
 		</div>
 	</div>
 	<!-- END PRELOADER -->
@@ -1053,23 +1054,7 @@
 	<!-- END WRAPPER -->
 	
 	<script>
-		window.addEventListener("DOMContentLoaded", event => {
-			var popup="allow music?"
-		window.open(popup,"def")
-		const audio = document.querySelector("audio");
-		audio.volume = 0.2;
-		audio.play();
-		});
-		var x = document.getElementById("music");
-
-		function playAudio() {
-		x.play();
-		}
-
-		function pauseAudio() {
-		x.pause();
-		}
-		window.onload = playAudio;
+	
 
 
 		const scriptURL = 'https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec'
