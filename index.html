@@ -431,12 +431,12 @@
 								<!-- <div id="map_canvas" class="gmap"></div> -->
 								
 								<div class="map_pins">
-									<ul class="pins">
+									<!-- <ul class="pins">
 										<li><i class="fas fa-bell"></i>Ceremony</li>
 										<li><i class="fas fa-glass-cheers"></i>Reception</li>
 										<li><i class="fas fa-bed"></i>Accomodations</li>
 										<li><i class="fas fa-plane"></i>Transportation</li>
-									</ul>
+									</ul> -->
 								</div>
 							</div>
 						</div>
@@ -664,14 +664,18 @@
 								<div class="neela-style">
 									<!-- <i class="icon-wedding"></i> -->
 									<h3>Bank Transfer</h3><br>
-									<strong><p>Bank Mandiri <br> 1300021951689 a/n Surya Akbar Niagara</p></strong>
-									<strong><p>Bank BCA <br> 2801860038 a/n Surya Akbar Niagara									</p></strong>
-									<strong><p>Bank BNI <br> 0855613163 a/n Surya Akbar Niagara</p></strong>
+									<strong id="bank1"><p >Bank Mandiri <br> 1300021951689 a/n Surya Akbar Niagara</p></strong>
+									<strong><p id="bank2">Bank BCA <br> 2801860038 a/n Surya Akbar Niagara									</p></strong>
+									<strong><p id="bank3">Bank BNI <br> 0855613163 a/n Surya Akbar Niagara</p></strong>
+									<div class="info">
+										<!-- <small>click for copy</small> -->
 
-									<!-- <div class="info">
-										<a href="#" class="img"><img src="https://via.placeholder.com/215x75.png?text=Store+Logo" alt="Macy's" /></a>
-										<a href="#" class="img"><img src="https://via.placeholder.com/215x75.png?text=Store+Logo" alt="Target" /></a>
-									</div> -->
+										<a onclick="Copy('1300021951689')" class="btn btn-primary reverse">Mandiri</a>
+										<a onclick="Copy('2801860038')" class="btn btn-primary reverse">BCA</a>
+										<a onclick="Copy('0855613163')" class="btn btn-primary reverse">BNI</a>
+
+										<!-- <a href="#" class="img"><img src="https://via.placeholder.com/215x75.png?text=Store+Logo" alt="Target" /></a> -->
+									</div>
 								</div>
 							</li>
 							
@@ -1059,8 +1063,22 @@
 	
 	<script>
 	
-
-
+		function Copy(Norek){
+			console.log(Norek)
+			navigator.clipboard.writeText(Norek);
+			alert("Norek Berhasil di Copy");
+		}
+		$('#bank1').click(function(){
+			console.log('aaa')
+        })
+		$('#bank2').click(function(){
+			navigator.clipboard.writeText('2801860038');
+			alert("Norek BCA Berhasil di Copy");
+		})
+		$('#bank3').click(function(){
+			navigator.clipboard.writeText('0855613163');
+			alert("Norek BCA Berhasil di Copy");
+		})
 		const scriptURL = 'https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec'
 		const form = document.forms['form-rsvp']
 	  
@@ -1078,7 +1096,7 @@
 				console.error('Error!', error.message)
 			} )
 		})
-
+	
 
 		function getData(){
 		const sheetId = '1thfWjJQpu0BZrik8H59UEis-lxOh7J8SW-AnxqNm5Y4';
