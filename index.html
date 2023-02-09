@@ -49,7 +49,8 @@
 	<script src="js/modernizr-3.6.0.min.js"></script>
 </head>
 <body>
-
+	<!-- <embed src="/images/music.mp3" loop="true" autostart="true" width="2"height="0"> -->
+	
 	<!-- BEGIN PRELOADER -->
 	<div id="preloader">
 		<div class="loading-heart">
@@ -68,7 +69,7 @@
 
 	<!-- BEGIN WRAPPER -->
 	<div id="wrapper">
-	
+		
 		<!-- BEGIN HEADER -->
 		<header id="header">
 			<div class="nav-section light">
@@ -130,6 +131,8 @@
 		
 		<!-- BEGIN HERO SECTION -->
 		<section id="hero" class="bg-slideshow section-divider-bottom-1">
+		<audio id="music"  src="./images/music.mp3" autoplay loop> </audio>
+				<!-- <p>If you are reading this, it is because your browser does not support the audio element.</p> -->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
@@ -517,7 +520,7 @@
 			<div class="container">
 			
 				<div class="row">
-					<div class="col-lg-12 col-xl-10 offset-xl-1">
+					<div id="new-sliders" class="col-lg-12 col-xl-10 offset-xl-1">
 						<div id="testimonials-slider" class="owl-carousel testimonials light" data-animation-direction="from-bottom" data-animation-delay="300">
 							<div class="item">
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
@@ -526,8 +529,21 @@
 									<h3>John Doe<small>Best Man</small></h3>
 								</div>
 							</div>
-							
 							<div class="item">
+								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
+								
+								<div class="author">
+									<h3>John Doe<small>Best Man</small></h3>
+								</div>
+							</div>
+							<div class="item">
+								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
+								
+								<div class="author">
+									<h3>John Doe<small>Best Man</small></h3>
+								</div>
+							</div>
+							<!-- <div class="item">
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
 								
 								<div class="author">
@@ -542,6 +558,21 @@
 									<h3>John Doe<small>Best Man</small></h3>
 								</div>
 							</div>
+							
+							<div class="item">
+								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
+								
+								<div class="author">
+									<h3>John Doe<small>Best Man</small></h3>
+								</div>
+							</div>
+							<div class="item">
+								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
+								
+								<div class="author">
+									<h3>John Doe<small>Best Man</small></h3>
+								</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -1021,7 +1052,89 @@
 	</div>
 	<!-- END WRAPPER -->
 	
-	
+	<script>
+		window.addEventListener("DOMContentLoaded", event => {
+		const audio = document.querySelector("audio");
+		audio.volume = 0.2;
+		audio.play();
+		});
+		var x = document.getElementById("music");
+
+		function playAudio() {
+		x.play();
+		}
+
+		function pauseAudio() {
+		x.pause();
+		}
+		window.onload = playAudio;
+
+
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec'
+		const form = document.forms['form-rsvp']
+	  
+		form.addEventListener('submit', e => {
+		  e.preventDefault()
+		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => {
+				$(".form_status_message").html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + 'Success Send!' + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+
+				document.getElementById("form-rsvp").reset();
+				console.log('Success!', response)
+			})
+			.catch(error =>{
+				$(".form_status_message").html("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + err + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+				console.error('Error!', error.message)
+			} )
+		})
+
+
+		function getData(){
+		const sheetId = '1thfWjJQpu0BZrik8H59UEis-lxOh7J8SW-AnxqNm5Y4';
+		const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
+		const sheetName = 'surya-riza';
+		const query = encodeURIComponent('Select *')
+		const url = `${base}&sheet=${sheetName}&tq=${query}`
+		fetch(url)
+        .then(res => res.text())
+        .then(rep => {
+			// console.log('response',)
+			const data = JSON.parse(rep.substring(47).slice(0, -2)).table.rows
+			let arr = ''
+			console.log('data',data[0].c[1].v)
+			data.forEach(d => {
+				let obj = ''
+				if(d.c[1] != null && d.c[5] !=null){
+				obj = "<div class=\"owl-item\" style=\"width: 516px;\">"+"<div class=\"item\">" + 
+							"<blockquote>" + d.c[5].v + "</blockquote>" +
+							"<div class=\"author\">"+
+								"<h3>" + d.c[1].v +"<small>Best Man</small></h3>"+
+							"</div>" + 
+						"</div>" + "</div>"
+				
+				}
+				// $('.owl-stage').append(obj)
+				// const dots = "<button role=\"button\" class=\"owl-dot\"><span></span></button>"
+				// $('.owl-dots').append(dots)
+
+				// if(d.c[5] !=null){
+				// 	obj.message = d.c[5].v
+				// }
+				// let div = `<div class="item">
+				// 	<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>			
+				// 		<div class="author">
+				// 	<h3>John Doe<small>Best Man</small></h3>
+				// 	</div>
+				// </div>`
+				// arr.push(obj)
+
+			});
+		
+            
+        })
+		}
+		window.onload = getData;
+	  </script>
 	<!-- Google Maps API and Map Richmarker Library -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHOXsTqoSDPQ5eC5TChvgOf3pAVGapYog"></script>
 	<script src="js/richmarker.js"></script>
@@ -1049,25 +1162,7 @@
 	<script src="js/variables.js"></script>
 	<script src="js/scripts.js"></script>
 
-	<script>
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbzroXU_87sry-QRY29uTPkOCSmCbSXcG-aAWiEGS6Jsy7d3n06SCbA1hP2uXEXUqe7b4g/exec'
-		const form = document.forms['form-rsvp']
-	  
-		form.addEventListener('submit', e => {
-		  e.preventDefault()
-		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-			.then(response => {
-				$(".form_status_message").html("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" + 'Success Send!' + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
-
-				document.getElementById("form-rsvp").reset();
-				console.log('Success!', response)
-			})
-			.catch(error =>{
-				$(".form_status_message").html("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + err + "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
-				console.error('Error!', error.message)
-			} )
-		})
-	  </script>
+	
 
 </body>
 </html>

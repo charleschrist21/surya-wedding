@@ -89,7 +89,7 @@ var Neela;
             /**
             * Initialize Google Maps and populate with pin locations
             */
-            $_self.googleMap();
+            // $_self.googleMap();
 
             /**
             * Create Lightbox Gallery links
