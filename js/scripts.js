@@ -430,170 +430,170 @@ var Neela;
             }
         },
 
-        googleMap: function () {
+        // googleMap: function () {
 
-            var $_self = this;
-            var styles = [];
-            var styledMap;
-            var myLatlng;
-            var mapOptions;
-            var gmap;
-            var mapCanvasId;
-            var createMarker;
-            var i = 0;
-            var zoomCtrlPos;
-            var stViewCtrlPos;
-            var fullscreenCtrlPos;
+        //     var $_self = this;
+        //     var styles = [];
+        //     var styledMap;
+        //     var myLatlng;
+        //     var mapOptions;
+        //     var gmap;
+        //     var mapCanvasId;
+        //     var createMarker;
+        //     var i = 0;
+        //     var zoomCtrlPos;
+        //     var stViewCtrlPos;
+        //     var fullscreenCtrlPos;
 
-            if ($(".gmap").length === 0 || $_self.mapMarkers === "undefined" || $_self.mapMarkers.length === 0 || window.google === undefined) {
-                return false;
-            }
+        //     if ($(".gmap").length === 0 || $_self.mapMarkers === "undefined" || $_self.mapMarkers.length === 0 || window.google === undefined) {
+        //         return false;
+        //     }
 
-            if (!(/^\d|\.|-$/.test($_self.mapInitialLatitude)) || !(/^\d|\.|-$/.test($_self.mapInitialLongitude))) {
-                $_self.mapInitialLatitude = $_self.mapMarkers[0].latitude;
-                $_self.mapInitialLongitude = $_self.mapMarkers[0].longitude;
-            }
+        //     if (!(/^\d|\.|-$/.test($_self.mapInitialLatitude)) || !(/^\d|\.|-$/.test($_self.mapInitialLongitude))) {
+        //         $_self.mapInitialLatitude = $_self.mapMarkers[0].latitude;
+        //         $_self.mapInitialLongitude = $_self.mapMarkers[0].longitude;
+        //     }
 
-            myLatlng = new google.maps.LatLng($_self.mapInitialLatitude, $_self.mapInitialLongitude);
+        //     myLatlng = new google.maps.LatLng($_self.mapInitialLatitude, $_self.mapInitialLongitude);
 
-            if (!$_self.useDefaultMapStyle) {
-                styles = [
-                    {
-                        stylers: [
-                            {hue: $_self.mapColor},
-                            {saturation: -75},
-                            {lightness: 5}
-                        ]
-                    },
-                    {
-                        featureType: "administrative",
-                        elementType: "labels.text.fill",
-                        stylers: [
-                            {saturation: 20},
-                            {lightness: -70}
-                        ]
-                    },
-                    {
-                        featureType: "water",
-                        elementType: "geometry",
-                        stylers: [
-                            {saturation: -50},
-                            {lightness: 40}
-                        ]
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry",
-                        stylers: [
-                            {hue: $_self.mapColor},
-                            {saturation: -100},
-                            {lightness: 0}
-                        ]
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry",
-                        stylers: [
-                            {hue: $_self.mapColor},
-                            {saturation: 5},
-                            {lightness: 5}
-                        ]
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry.stroke",
-                        stylers: [
-                            {saturation: 10},
-                            {lightness: 0}
-                        ]
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry.stroke",
-                        stylers: [
-                            {saturation: 0},
-                            {lightness: 20}
-                        ]
-                    },
-                    {
-                        featureType: "transit",
-                        elementType: "geometry",
-                        stylers: [
-                            {hue: $_self.mapColor},
-                            {saturation: 30},
-                            {lightness: -30}
-                        ]
-                    }
-                ];
-            }
+        //     if (!$_self.useDefaultMapStyle) {
+        //         styles = [
+        //             {
+        //                 stylers: [
+        //                     {hue: $_self.mapColor},
+        //                     {saturation: -75},
+        //                     {lightness: 5}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "administrative",
+        //                 elementType: "labels.text.fill",
+        //                 stylers: [
+        //                     {saturation: 20},
+        //                     {lightness: -70}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "water",
+        //                 elementType: "geometry",
+        //                 stylers: [
+        //                     {saturation: -50},
+        //                     {lightness: 40}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "road",
+        //                 elementType: "geometry",
+        //                 stylers: [
+        //                     {hue: $_self.mapColor},
+        //                     {saturation: -100},
+        //                     {lightness: 0}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "road.highway",
+        //                 elementType: "geometry",
+        //                 stylers: [
+        //                     {hue: $_self.mapColor},
+        //                     {saturation: 5},
+        //                     {lightness: 5}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "road",
+        //                 elementType: "geometry.stroke",
+        //                 stylers: [
+        //                     {saturation: 10},
+        //                     {lightness: 0}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "road.highway",
+        //                 elementType: "geometry.stroke",
+        //                 stylers: [
+        //                     {saturation: 0},
+        //                     {lightness: 20}
+        //                 ]
+        //             },
+        //             {
+        //                 featureType: "transit",
+        //                 elementType: "geometry",
+        //                 stylers: [
+        //                     {hue: $_self.mapColor},
+        //                     {saturation: 30},
+        //                     {lightness: -30}
+        //                 ]
+        //             }
+        //         ];
+        //     }
 
-            styledMap = new google.maps.StyledMapType(styles, {name: "Neela"});
+        //     styledMap = new google.maps.StyledMapType(styles, {name: "Neela"});
 
-            zoomCtrlPos = google.maps.ControlPosition.RIGHT_CENTER;
-            stViewCtrlPos = google.maps.ControlPosition.RIGHT_BOTTOM;
-            fullscreenCtrlPos = google.maps.ControlPosition.RIGHT_TOP;
+        //     zoomCtrlPos = google.maps.ControlPosition.RIGHT_CENTER;
+        //     stViewCtrlPos = google.maps.ControlPosition.RIGHT_BOTTOM;
+        //     fullscreenCtrlPos = google.maps.ControlPosition.RIGHT_TOP;
 
-            if ($_self.rtlFlag) {
-                zoomCtrlPos = google.maps.ControlPosition.LEFT_CENTER;
-                stViewCtrlPos = google.maps.ControlPosition.LEFT_BOTTOM;
-                fullscreenCtrlPos = google.maps.ControlPosition.LEFT_TOP;
-            }
+        //     if ($_self.rtlFlag) {
+        //         zoomCtrlPos = google.maps.ControlPosition.LEFT_CENTER;
+        //         stViewCtrlPos = google.maps.ControlPosition.LEFT_BOTTOM;
+        //         fullscreenCtrlPos = google.maps.ControlPosition.LEFT_TOP;
+        //     }
 
-            mapOptions = {
-                center: myLatlng,
-                zoom: $_self.mapInitialZoom,
-                scrollwheel: false,
-                panControl: false,
-                mapTypeControl: false,
-                zoomControl: true,
-                zoomControlOptions: {
-                    position: zoomCtrlPos
-                },
-                streetViewControlOptions: {
-                    position: stViewCtrlPos
-                },
-                fullscreenControlOptions: {
-                    position: fullscreenCtrlPos
-                }
-            };
+        //     mapOptions = {
+        //         center: myLatlng,
+        //         zoom: $_self.mapInitialZoom,
+        //         scrollwheel: false,
+        //         panControl: false,
+        //         mapTypeControl: false,
+        //         zoomControl: true,
+        //         zoomControlOptions: {
+        //             position: zoomCtrlPos
+        //         },
+        //         streetViewControlOptions: {
+        //             position: stViewCtrlPos
+        //         },
+        //         fullscreenControlOptions: {
+        //             position: fullscreenCtrlPos
+        //         }
+        //     };
 
-            $(".gmap").each(function () {
-                mapCanvasId = $(this).attr("id");
+        //     // $(".gmap1").each(function () {
+        //     //     mapCanvasId = $(this).attr("id");
 
-                gmap = new google.maps.Map(document.getElementById(mapCanvasId), mapOptions);
-                gmap.mapTypes.set("map_style", styledMap);
-                gmap.setMapTypeId("map_style");
+        //     //     gmap = new google.maps.Map(document.getElementById(mapCanvasId), mapOptions);
+        //     //     gmap.mapTypes.set("map_style", styledMap);
+        //     //     gmap.setMapTypeId("map_style");
 
-                createMarker = function (obj) {
-                    var lat = obj.latitude;
-                    var lng = obj.longitude;
-                    var icon = obj.icon;
-                    var info = obj.infoWindow;
+        //     //     createMarker = function (obj) {
+        //     //         var lat = obj.latitude;
+        //     //         var lng = obj.longitude;
+        //     //         var icon = obj.icon;
+        //     //         var info = obj.infoWindow;
 
-                    var infowindow = new google.maps.InfoWindow({
-                        content: "<div class=\"infoWindow\">" + info + "</div>"
-                    });
+        //     //         var infowindow = new google.maps.InfoWindow({
+        //     //             content: "<div class=\"infoWindow\">" + info + "</div>"
+        //     //         });
 
-                    var marker = new RichMarker({
-                        position: new google.maps.LatLng(lat, lng),
-                        map: gmap,
-                        anchor: 8,
-                        anchorPoint: new google.maps.Point(0, -50),
-                        shadow: "none",
-                        content: "<div class=\"marker\"><i class=\"fa " + icon + "\"></i></div>"
-                    });
+        //     //         var marker = new RichMarker({
+        //     //             position: new google.maps.LatLng(lat, lng),
+        //     //             map: gmap,
+        //     //             anchor: 8,
+        //     //             anchorPoint: new google.maps.Point(0, -50),
+        //     //             shadow: "none",
+        //     //             content: "<div class=\"marker\"><i class=\"fa " + icon + "\"></i></div>"
+        //     //         });
 
-                    google.maps.event.addListener(marker, "click", function () {
-                        infowindow.open(gmap, marker);
-                    });
-                };
+        //     //         google.maps.event.addListener(marker, "click", function () {
+        //     //             infowindow.open(gmap, marker);
+        //     //         });
+        //     //     };
 
-                while (i < $_self.mapMarkers.length) {
-                    createMarker($_self.mapMarkers[i]);
-                    i += 1;
-                }
-            });
-        },
+        //     //     while (i < $_self.mapMarkers.length) {
+        //     //         createMarker($_self.mapMarkers[i]);
+        //     //         i += 1;
+        //     //     }
+        //     // });
+        // },
 
         createBackgroundSlideshow: function () {
             var $_self = this;
