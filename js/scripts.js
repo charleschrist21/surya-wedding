@@ -649,19 +649,71 @@ var Neela;
                     rtl: $_self.rtlFlag
                 });
             }
-
-            if ($(".testimonials").length) {
-                $(".testimonials").owlCarousel({
-                    nav: false,
-                    dots: true,
-                    responsive: {
-                        "0": {
-                            items: 1
+            function getData(){
+                const sheetId = '1thfWjJQpu0BZrik8H59UEis-lxOh7J8SW-AnxqNm5Y4';
+                const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
+                const sheetName = 'surya-riza';
+                const query = encodeURIComponent('Select *')
+                const url = `${base}&sheet=${sheetName}&tq=${query}`
+                fetch(url)
+                .then(res => res.text())
+                .then(rep => {
+                    // console.log('response',)
+                    const data = JSON.parse(rep.substring(47).slice(0, -2)).table.rows
+                    let arr = ''
+                    let obj = ''
+                    console.log('data',data[0].c[1].v)
+                    data.forEach(d => {
+                        if(d.c[1] != null && d.c[5] !=null && d.c[2] != null){
+                        obj += "<div class=\"item\">" + 
+                                    "<blockquote>" + d.c[5].v + "</blockquote>" +
+                                    "<div class=\"author\">"+
+                                        "<h3>" + d.c[1].v +"<small>"+d.c[2].v+"</small></h3>"+
+                                    "</div>" + 
+                                "</div>"
+                        
                         }
-                    },
-                    rtl: $_self.rtlFlag
-                });
-            }
+                        // $('.owl-stage').append(obj)
+                        // const dots = "<button role=\"button\" class=\"owl-dot\"><span></span></button>"
+                        // $('.owl-dots').append(dots)
+                        console.log('aaa')
+                        // if(d.c[5] !=null){
+                        // 	obj.message = d.c[5].v
+                        // }
+                        // let div = `<div class="item">
+                        // 	<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>			
+                        // 		<div class="author">
+                        // 	<h3>John Doe<small>Best Man</small></h3>
+                        // 	</div>
+                        // </div>`
+                        // arr.push(obj)
+        
+                    });
+                    $('#testimonials-slider').html(obj)
+        
+                    console.log('aaa',obj)
+                    
+                    
+                })
+                }
+            getData()
+
+            setTimeout(() => {
+                if ($(".testimonials").length) {
+                    $(".testimonials").owlCarousel({
+                        nav: false,
+                        dots: true,
+                        responsive: {
+                            "0": {
+                                items: 1
+                            }
+                        },
+                        rtl: $_self.rtlFlag
+                    });
+                }
+            },3000)
+
+          
         },
 
         createGallery: function () {

@@ -414,15 +414,17 @@
 							<div class="info-wrapper" data-animation-direction="from-bottom" data-animation-delay="100">
 								<div class="location-info">
 									<div class="neela-style">
-										<h4 class="has-icon"><i class="icon-diamond-ring"></i>AKAD<small>08:00 wib - done</small></h4>
+										<!-- <h4 class="has-icon"><i class="icon-diamond-ring"></i>AKAD<small>08:00 wib - done</small></h4>
 										<h5>Gedung SM Sair Puslitbang Tekmira</h5>
-										<p>3HJH+8H2, Warung Muncang, Bandung Kulon, Bandung City, West Java 40211</p>
+										<p>3HJH+8H2, Warung Muncang, Bandung Kulon, Bandung City, West Java 40211</p> -->
 										
 										<div class="info-map-divider"></div>
 										
-										<h4 class="has-icon"><i class="icon-champagne-glasses"></i>Reception<small>11.00wib-14.00wib</small></h4>
+										<h4 class="has-icon"><i class="icon-diamond-ring"></i>Reception<small>11.00wib-14.00wib</small></h4>
 										<h5>Gedung SM Sair Puslitbang Tekmira</h5>
 										<p>3HJH+8H2, Warung Muncang, Bandung Kulon, Bandung City, West Java 40211</p>
+										<div class="info-map-divider"></div>
+
 									</div>
 								</div>
 							</div>
@@ -523,27 +525,22 @@
 				<div class="row">
 					<div id="new-sliders" class="col-lg-12 col-xl-10 offset-xl-1">
 						<div id="testimonials-slider" class="owl-carousel testimonials light" data-animation-direction="from-bottom" data-animation-delay="300">
-							<div class="item">
+							
+							<!-- <div class="item">
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
 								
 								<div class="author">
 									<h3>John Doe<small>Best Man</small></h3>
 								</div>
 							</div>
+							
 							<div class="item">
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
 								
 								<div class="author">
 									<h3>John Doe<small>Best Man</small></h3>
 								</div>
-							</div>
-							<div class="item">
-								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
-								
-								<div class="author">
-									<h3>John Doe<small>Best Man</small></h3>
-								</div>
-							</div>
+							</div> -->
 							<!-- <div class="item">
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius ante libero, a sollicitudin elit malesuada et. Nulla facilisi. Pellentesque magna diam, mattis a gravida eget, lobortis ut velit. Nam interdum hendrerit nisl et malesuada. Nulla facilisis velit neque, sed ultrices nibh facilisis non.</blockquote>
 								
@@ -695,6 +692,10 @@
 									<i class="icon-honeymoon"></i>
 									<h3>Dompet Digital</h3>
 									<img style="margin-top: 20px;margin-left: auto;margin-right: auto;display: block;" src="./images/qr.png" alt="">
+									<center style="margin-top: 20px;">
+										<a href="https://saweria.co/suryariza" target="_blank" >https://saweria.co/suryariza</a>
+
+									</center>
 									
 									<!-- <div class="info">
 										<a href="#" class="btn btn-primary reverse">$50</a>
@@ -1060,6 +1061,32 @@
 		
 	</div>
 	<!-- END WRAPPER -->
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHOXsTqoSDPQ5eC5TChvgOf3pAVGapYog"></script>
+	<script src="js/richmarker.js"></script>
+	
+	<!-- Libs -->
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery-migrate-3.3.2.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/jquery.placeholder.min.js"></script>
+	<script src="js/ismobile.js"></script>
+	<script src="js/retina.min.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/waypoints-sticky.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/lightbox.min.js"></script>
+    
+    <!-- Nicescroll script to handle gallery section touch swipe -->
+	<script src="js/jquery.nicescroll.js"></script>
+    
+    <!-- Hero Background Slideshow Script -->
+	<script src="js/jquery.zoomslider.js"></script>
+	
+	<!-- Template Scripts -->
+	<script src="js/variables.js"></script>
+	<script src="js/scripts.js"></script>
 	
 	<script>
 	
@@ -1110,22 +1137,22 @@
 			// console.log('response',)
 			const data = JSON.parse(rep.substring(47).slice(0, -2)).table.rows
 			let arr = ''
+			let obj = ''
 			console.log('data',data[0].c[1].v)
 			data.forEach(d => {
-				let obj = ''
 				if(d.c[1] != null && d.c[5] !=null){
-				obj = "<div class=\"owl-item\" style=\"width: 516px;\">"+"<div class=\"item\">" + 
+				obj += "<div class=\"item\">" + 
 							"<blockquote>" + d.c[5].v + "</blockquote>" +
 							"<div class=\"author\">"+
 								"<h3>" + d.c[1].v +"<small>Best Man</small></h3>"+
 							"</div>" + 
-						"</div>" + "</div>"
+						"</div>"
 				
 				}
 				// $('.owl-stage').append(obj)
 				// const dots = "<button role=\"button\" class=\"owl-dot\"><span></span></button>"
 				// $('.owl-dots').append(dots)
-
+				console.log('aaa')
 				// if(d.c[5] !=null){
 				// 	obj.message = d.c[5].v
 				// }
@@ -1138,38 +1165,17 @@
 				// arr.push(obj)
 
 			});
-		
-            
+			$('#testimonials-slider').html(obj)
+
+			console.log('aaa',obj)
+			
+			
         })
 		}
-		window.onload = getData;
+		// window.onload = getData;
 	  </script>
 	<!-- Google Maps API and Map Richmarker Library -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHOXsTqoSDPQ5eC5TChvgOf3pAVGapYog"></script>
-	<script src="js/richmarker.js"></script>
 	
-	<!-- Libs -->
-	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/jquery-migrate-3.3.2.min.js"></script>
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery.placeholder.min.js"></script>
-	<script src="js/ismobile.js"></script>
-	<script src="js/retina.min.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/waypoints-sticky.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/lightbox.min.js"></script>
-    
-    <!-- Nicescroll script to handle gallery section touch swipe -->
-	<script src="js/jquery.nicescroll.js"></script>
-    
-    <!-- Hero Background Slideshow Script -->
-	<script src="js/jquery.zoomslider.js"></script>
-	
-	<!-- Template Scripts -->
-	<script src="js/variables.js"></script>
-	<script src="js/scripts.js"></script>
 
 	
 
