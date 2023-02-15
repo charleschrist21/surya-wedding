@@ -183,7 +183,6 @@ var Neela;
                 // if (/loaded|complete/.test(document.readyState)) {
                     $('#openCard').css('display','block')
 
-                    clearInterval(isLoaded);
                     $('body').click(function(){
                         $("#preloader").fadeOut(700);
 
@@ -191,6 +190,7 @@ var Neela;
                         // audio.volume = 0.5;
                         audio.play();
                     })
+                    clearInterval(isLoaded);
                     
                 // }
             }, 300);
