@@ -192,7 +192,7 @@ var Neela;
                     })
                     
                 // }
-            }, 100);
+            }, 300);
         },
 
         openCard: function(){
