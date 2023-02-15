@@ -180,7 +180,7 @@ var Neela;
 
         preloader: function () {
             var isLoaded = setInterval(function () {
-                if (/loaded|complete/.test(document.readyState)) {
+                // if (/loaded|complete/.test(document.readyState)) {
                     clearInterval(isLoaded);
                     $('#openCard').html('Click For Open')
                     $('body').click(function(){
@@ -191,8 +191,8 @@ var Neela;
                         audio.play();
                     })
                     
-                }
-            }, 10);
+                // }
+            }, 100);
         },
 
         openCard: function(){
