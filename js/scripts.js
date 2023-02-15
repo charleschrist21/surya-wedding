@@ -181,8 +181,9 @@ var Neela;
         preloader: function () {
             var isLoaded = setInterval(function () {
                 // if (/loaded|complete/.test(document.readyState)) {
+                    $('#openCard').css('display','block')
+
                     clearInterval(isLoaded);
-                    $('#openCard').html('Click For Open')
                     $('body').click(function(){
                         $("#preloader").fadeOut(700);
 
